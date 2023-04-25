@@ -51,7 +51,7 @@
                     app:passwordToggleEnabled="false">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/loginEmailET"
+                        android:id="@+id/userNameET"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginHorizontal="30dp"
@@ -79,7 +79,7 @@
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/loginPasswordET"
+                        android:id="@+id/PasswordET"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="30dp"

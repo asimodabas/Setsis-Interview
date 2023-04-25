@@ -6,7 +6,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shopapp.R
 import com.example.shopapp.ui.activity.login.LoginActivity
-import com.example.shopapp.util.Constants
+import com.example.shopapp.common.Constants
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

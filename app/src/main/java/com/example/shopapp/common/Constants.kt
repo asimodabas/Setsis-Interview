@@ -1,4 +1,4 @@
-package com.example.shopapp.util
+package com.example.shopapp.common
 
 object Constants {
 
