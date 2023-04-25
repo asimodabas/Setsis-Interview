@@ -1,10 +1,11 @@
-package com.example.shopapp.ui.activity
+package com.example.shopapp.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.example.shopapp.R
+import com.example.shopapp.ui.activity.login.LoginActivity
 import com.example.shopapp.util.Constants
 
 class SplashScreen : AppCompatActivity() {
@@ -15,7 +16,7 @@ class SplashScreen : AppCompatActivity() {
         supportActionBar?.hide()
 
         Handler().postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }, Constants.SPLASH_TIME)
     }
