@@ -6,6 +6,7 @@ import com.example.shopapp.data.dto.Token
 interface ShopRepository {
     fun logIn(
         usernameOrEmail: String,
-        password: String
-    ): Resource<Token?>
+        password: String,
+        result: (Resource<Token?>) -> Unit
+    )
 }

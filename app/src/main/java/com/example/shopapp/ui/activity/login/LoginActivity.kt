@@ -22,7 +22,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        binding.loginButton.setOnClickListener {
             binding.loginButton.setOnClickListener {
                 val userNameET = binding.userNameET.text
                 val passwordET = binding.PasswordET.text
@@ -35,19 +34,22 @@ class LoginActivity : AppCompatActivity() {
                                 "TAG",
                                 "accessToken: ${token.accessToken} \n refreshToken: ${token.refreshToken}"
                             )
+
                             intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                         }
 
-                        state.error?.let {
-                            Toast.makeText(this, "${state.error}", Toast.LENGTH_SHORT).show()
+                        state.error?.let { message ->
+                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
                         }
+
+                        Log.d("TAG", "onCreate: $state")
                     }
                 } else {
                     Toast.makeText(this, "Please fill in the blanks!", Toast.LENGTH_SHORT).show()
                 }
             }
-        }
+
     }
 
 

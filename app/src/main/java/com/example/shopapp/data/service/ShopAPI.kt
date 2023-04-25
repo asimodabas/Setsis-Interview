@@ -1,19 +1,15 @@
 package com.example.shopapp.data.service
 
 import com.example.shopapp.data.dto.TokenResponse
-import com.example.shopapp.model.Product
+import com.example.shopapp.domain.model.LoginRequest
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ShopAPI {
 
     @POST("api/Auth/Login")
     fun logIn(
-        @Field("usernameOrEmail") usernameOrEmail: String,
-        @Field("password") password: String
+        @Body body: LoginRequest,
     ): Call<TokenResponse>
 
     @POST("/api/Auth/RefreshTokenLogin")
@@ -24,7 +20,7 @@ interface ShopAPI {
     @GET("api/Category/GetAll")
     fun getAllCategories(
         @Header("Authorization") accessToken: String
-    ): Call<Product>
+    )
 
 
 }
