@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.shopapp.databinding.ActivityLoginBinding
 import com.example.shopapp.ui.activity.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
@@ -22,33 +25,37 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-            binding.loginButton.setOnClickListener {
-                val userNameET = binding.userNameET.text
-                val passwordET = binding.PasswordET.text
+        binding.loginButton.setOnClickListener {
+            val userNameET = binding.userNameET.text
+            val passwordET = binding.PasswordET.text
 
-                if (!(userNameET.isNullOrEmpty() && passwordET.isNullOrEmpty())) {
-                    viewModel.logIn(userNameET.toString(), passwordET.toString())
-                    viewModel.loginState.observe(this) { state ->
-                        state.success?.let { token ->
-                            Log.d(
-                                "TAG",
-                                "accessToken: ${token.accessToken} \n refreshToken: ${token.refreshToken}"
-                            )
+            if (!(userNameET.isNullOrEmpty() && passwordET.isNullOrEmpty())) {
+                viewModel.logIn(userNameET.toString(), passwordET.toString())
+                viewModel.loginState.observe(this) { state ->
+                    state.success?.let { token ->
+                        Log.d(
+                            "TAG",
+                            "accessToken: ${token.accessToken} \n refreshToken: ${token.refreshToken}"
+                        )
 
-                            intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
+                        CoroutineScope(Dispatchers.Main).launch {
+                            viewModel.addToken(token)
                         }
 
-                        state.error?.let { message ->
-                            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                        }
-
-                        Log.d("TAG", "onCreate: $state")
+                        intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
                     }
-                } else {
-                    Toast.makeText(this, "Please fill in the blanks!", Toast.LENGTH_SHORT).show()
+
+                    state.error?.let { message ->
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    }
+
+                    Log.d("TAG", "onCreate: $state")
                 }
+            } else {
+                Toast.makeText(this, "Please fill in the blanks!", Toast.LENGTH_SHORT).show()
             }
+        }
 
     }
 
