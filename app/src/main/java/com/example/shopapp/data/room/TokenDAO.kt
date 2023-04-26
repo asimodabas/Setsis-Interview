@@ -9,8 +9,11 @@ import com.example.shopapp.data.dto.Token
 interface TokenDAO {
 
     @Query("SELECT * FROM token")
-    suspend fun getAllToken(): List<Token>
+    fun getAllToken(): List<Token>
 
     @Insert
     fun addToken(token: Token)
+
+    @Query("DELETE FROM token")
+    fun deleteAll()
 }

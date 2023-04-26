@@ -1,6 +1,8 @@
 package com.example.shopapp.di
 
+import com.example.shopapp.data.repository.LoginRepositoryImpl
 import com.example.shopapp.data.repository.ShopRepositoryImpl
+import com.example.shopapp.domain.repository.LoginRepository
 import com.example.shopapp.domain.repository.ShopRepository
 import dagger.Binds
 import dagger.Module
@@ -15,4 +17,8 @@ abstract class RepositoryModule {
     @Binds
     @ViewModelScoped
     abstract fun provideShopRepository(shopRepositoryImpl: ShopRepositoryImpl): ShopRepository
+
+    @Binds
+    @ViewModelScoped
+    abstract fun provideLoginRepository(loginRepositoryImpl: LoginRepositoryImpl): LoginRepository
 }
