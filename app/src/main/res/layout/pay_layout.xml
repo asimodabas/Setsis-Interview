@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="15dp"
+            android:elevation="15dp"
+            android:gravity="center"
+            android:hint="@string/basket_payment"
+            android:padding="10dp"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/nameET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_customtext"
+            android:hint="@string/basket_name_surname"
+            android:maxLength="150"
+            android:textAlignment="center" />
+
+        <EditText
+            android:id="@+id/cardNumberET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_customtext"
+            android:hint="@string/basket_card_number"
+            android:inputType="number"
+            android:padding="15dp"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/mounthET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_customtext"
+                android:hint="@string/basket_mounth"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/yearET"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_customtext"
+                android:hint="@string/basket_year"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/cvvET"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_customtext"
+                android:hint="@string/basket_cvv"
+                android:inputType="number"
+                android:padding="15dp"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

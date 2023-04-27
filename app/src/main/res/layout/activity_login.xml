@@ -106,26 +106,5 @@
                     android:text="@string/login_button" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/forgotPassTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="25dp"
-            android:text="@string/login_forgot_password"
-            android:textColor="@color/black"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/createButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginHorizontal="75dp"
-            android:layout_marginVertical="50dp"
-            android:background="@drawable/bg_customtext"
-            android:backgroundTint="@color/black"
-            android:text="@string/login_register" />
     </LinearLayout>
 </ScrollView>

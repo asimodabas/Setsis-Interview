@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/splash_logo"
         android:layout_marginTop="15dp"
-        android:text="Setsis Bilişim Teknolojileri"
+        android:text="@string/splash_base"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="30sp"

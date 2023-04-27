@@ -24,7 +24,7 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:textStyle="bold"
-                tools:text="categoryId" />
+                tools:text="@string/product_categoryId" />
 
             <TextView
                 android:id="@+id/priceTV"
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="price" />
+                tools:text="@string/product_price" />
 
             <TextView
                 android:id="@+id/createdDateTV"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="createdDate" />
+                tools:text="@string/product_createdDate" />
 
             <TextView
                 android:id="@+id/productNameTV"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="product" />
+                tools:text="@string/product_product" />
 
             <TextView
                 android:id="@+id/stockTV"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="stock" />
+                tools:text="@string/product_stock" />
 
             <ImageView
                 android:id="@+id/addBasketIv"

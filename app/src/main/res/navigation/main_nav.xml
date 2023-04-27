@@ -22,13 +22,6 @@
             app:destination="@id/categoriesDetailFragment" />
     </fragment>
     <fragment
-        android:id="@+id/productFragment"
-        android:name="com.example.shopapp.ui.fragment.product.ProductFragment"
-        android:label="fragment_product"
-        tools:layout="@layout/fragment_product">
-
-    </fragment>
-    <fragment
         android:id="@+id/categoriesDetailFragment"
         android:name="com.example.shopapp.ui.fragment.categories_detail.CategoriesDetailFragment"
         android:label="fragment_categories_detail"

@@ -7,7 +7,42 @@
     <string name="login_username">Username</string>
     <string name="login_password">Password</string>
     <string name="login_button">Login</string>
-    <string name="login_forgot_password">I forgot my password</string>
-    <string name="login_register">Register</string>
+
+    <!-- Basket Activity -->
+    <string name="basket_payment">Ödeme Sayfası</string>
+    <string name="basket_card_number">Kart Numarası</string>
+    <string name="basket_name_surname">Ad Soyad</string>
+    <string name="basket_accept">Onayla</string>
+    <string name="basket_cancel">İptal Et</string>
+    <string name="basket_pay_success">Ödeme Başarılı</string>
+    <string name="basket_mounth">Ay</string>
+    <string name="basket_year">Yıl</string>
+    <string name="basket_cvv">CVV</string>
+    <string name="basket_fill_blanks">Lütfen Boşlukları Doldurun</string>
+
+    <!-- Menu Items-->
+    <string name="menu_home">Home</string>
+    <string name="menu_categories">Categories</string>
+
+    <!-- Row Items -->
+    <string name="basket_categoryId">CategoryId</string>
+    <string name="basket_price">Price</string>
+    <string name="basket_createdDate">Created Date</string>
+    <string name="basket_product">Product</string>
+    <string name="basket_stock">Stock</string>
+
+    <string name="categories_categoryId">CategoryId</string>
+    <string name="categories_name">CategoryName</string>
+    <string name="categories_products">Products</string>
+    <string name="categories_createdDate">CreatedDate</string>
+
+    <string name="product_categoryId">CategoryId</string>
+    <string name="product_price">Price</string>
+    <string name="product_createdDate">CreatedDate</string>
+    <string name="product_product">Product</string>
+    <string name="product_stock">Stock</string>
+
+    <!-- Splash Screen-->
+    <string name="splash_base">Setsis Bilişim Teknolojileri</string>
 
 </resources>

@@ -14,9 +14,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class CategoriesDetailViewModel @Inject constructor(
-    private val roomRepository: RoomRepository,
-    private val shopRepository: ShopRepository
+class CategoriesDetailViewModel
+@Inject constructor(
+    private val roomRepository: RoomRepository, private val shopRepository: ShopRepository
 ) : ViewModel() {
 
     private val _productsState = MutableLiveData<GetProductState>()

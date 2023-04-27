@@ -23,7 +23,7 @@
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 android:textStyle="bold"
-                tools:text="categoryId" />
+                tools:text="@string/categories_categoryId" />
 
             <TextView
                 android:id="@+id/categoryNameTV"
@@ -31,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="categoryName" />
+                tools:text="@string/categories_name" />
 
             <TextView
                 android:id="@+id/createdDateTV"
@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="createdDate" />
+                tools:text="@string/categories_createdDate" />
 
             <TextView
                 android:id="@+id/productsTV"
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="products" />
+                tools:text="@string/categories_products" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

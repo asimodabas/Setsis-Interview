@@ -6,12 +6,12 @@
     <item
         android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
-        android:title="Home" />
+        android:title="@string/menu_home" />
     <item
         android:id="@+id/placeholder"
         android:title="" />
     <item
         android:id="@+id/categoriesFragment"
         android:icon="@drawable/ic_categories"
-        android:title="Categories" />
+        android:title="@string/menu_categories" />
 </menu>

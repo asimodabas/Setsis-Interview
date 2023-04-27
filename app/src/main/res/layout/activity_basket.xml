@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat
+<androidx.constraintlayout.widget.ConstraintLayout
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -15,7 +15,16 @@
         android:layout_height="match_parent"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="75dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-        app:layout_constraintTop_toBottomOf="@+id/vp2Home" />
-</androidx.appcompat.widget.LinearLayoutCompat>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/payFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_pay"
+        app:backgroundTint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/basketRV"
+        app:layout_constraintStart_toStartOf="@+id/basketRV"
+        app:layout_constraintTop_toBottomOf="@+id/basketRV" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
