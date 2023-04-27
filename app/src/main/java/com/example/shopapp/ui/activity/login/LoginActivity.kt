@@ -56,8 +56,5 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(this, "Please fill in the blanks!", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
-
-
 }

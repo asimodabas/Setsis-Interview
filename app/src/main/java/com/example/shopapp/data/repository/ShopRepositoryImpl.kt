@@ -81,8 +81,8 @@ class ShopRepositoryImpl @Inject constructor(
                     override fun onResponse(
                         call: Call<CategoriesResponse>, response: Response<CategoriesResponse>
                     ) {
-                        response.body()?.let { response ->
-                            result(Resource.Success(response))
+                        response.body()?.let { categoriesResponse ->
+                            result(Resource.Success(categoriesResponse))
                         } ?: kotlin.run {
                             result(Resource.Error("${response.raw().code}: ${response.raw().message}"))
                         }
@@ -99,6 +99,4 @@ class ShopRepositoryImpl @Inject constructor(
             result(Resource.Error(e.message.orEmpty()))
         }
     }
-
-
 }
