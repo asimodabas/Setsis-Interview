@@ -1,5 +1,6 @@
 package com.example.shopapp.data.repository
 
+import com.example.shopapp.data.dto.Product
 import com.example.shopapp.data.dto.Token
 import com.example.shopapp.data.room.TokenDAO
 import com.example.shopapp.domain.repository.LoginRepository
@@ -21,5 +22,9 @@ class LoginRepositoryImpl @Inject constructor(
 
     override suspend fun deleteAll() = withContext(Dispatchers.IO) {
         dao.deleteAll()
+    }
+
+    override suspend fun saveProduct(product: Product) {
+        dao.saveProduct(product)
     }
 }

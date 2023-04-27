@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.common.Resource
 import com.example.shopapp.common.state.GetRandomProductState
+import com.example.shopapp.data.dto.Product
 import com.example.shopapp.domain.repository.LoginRepository
 import com.example.shopapp.domain.repository.ShopRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class HomeViewModel
 @Inject constructor(
     private val shopRepository: ShopRepository,
-    private val loginRepository: LoginRepository,
+    private val loginRepository: LoginRepository
 ) : ViewModel() {
 
     private val _randomProductState = MutableLiveData<GetRandomProductState>()
@@ -45,5 +46,9 @@ class HomeViewModel
                 }
             }
         }
+    }
+
+    fun saveProduct(product: Product) = viewModelScope.launch {
+        loginRepository.saveProduct(product)
     }
 }

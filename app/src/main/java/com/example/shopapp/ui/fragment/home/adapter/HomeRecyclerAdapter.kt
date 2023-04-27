@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.data.dto.Product
 import com.example.shopapp.databinding.RowProductItemBinding
 
-class HomeRecyclerAdapter : ListAdapter<Product, HomeRecyclerAdapter.HomeViewHolder>(DiffCallback) {
+class HomeRecyclerAdapter(private val listener: OnItemClickListener) :
+    ListAdapter<Product, HomeRecyclerAdapter.HomeViewHolder>(DiffCallback) {
 
     class HomeViewHolder(private val binding: RowProductItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -42,5 +43,9 @@ class HomeRecyclerAdapter : ListAdapter<Product, HomeRecyclerAdapter.HomeViewHol
     override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
         val currentList = currentList[position]
         holder.bind(currentList)
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(product: Product)
     }
 }

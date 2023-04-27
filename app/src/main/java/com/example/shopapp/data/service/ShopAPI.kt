@@ -4,6 +4,7 @@ import com.example.shopapp.data.dto.CategoriesResponse
 import com.example.shopapp.data.dto.ProductResponse
 import com.example.shopapp.data.dto.TokenResponse
 import com.example.shopapp.domain.model.LoginRequest
+import com.example.shopapp.domain.model.OrdersRequest
 import com.example.shopapp.domain.model.RefreshTokenRequest
 import retrofit2.Call
 import retrofit2.http.*
@@ -29,4 +30,10 @@ interface ShopAPI {
     fun getRandomProduct(
         @Header("Authorization") accessToken: String
     ): Call<ProductResponse>
+
+    @POST("api/Order")
+    fun requestOrder(
+        @Header("Authorization") accessToken: String,
+        @Body body: OrdersRequest
+    ): Call<Nothing>
 }

@@ -1,8 +1,12 @@
 package com.example.shopapp.data.dto
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
+@Entity(tableName = "product")
 data class Product(
+    @PrimaryKey(autoGenerate = true) var uuid: Int = 0,
     @SerializedName("category") val category: Any,
     @SerializedName("categoryId") val categoryId: Int,
     @SerializedName("createdDate") val createdDate: String,
