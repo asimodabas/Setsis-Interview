@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shopapp.R
 import com.example.shopapp.common.viewBinding
@@ -44,7 +45,7 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
     private fun setupRv() {
         binding.categoriesRV.apply {
-            categoriesRecyclerAdapter = CategoriesRecyclerAdapter()
+            categoriesRecyclerAdapter = CategoriesRecyclerAdapter(findNavController())
             adapter = categoriesRecyclerAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)

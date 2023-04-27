@@ -1,4 +1,4 @@
-package com.example.shopapp.ui.fragment.home.adapter
+package com.example.shopapp.ui.fragment.categories_detail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,16 +7,16 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.data.dto.Product
 import com.example.shopapp.databinding.RowProductItemBinding
-import com.example.shopapp.ui.fragment.home.HomeViewModel
+import com.example.shopapp.ui.fragment.categories_detail.CategoriesDetailViewModel
 
-class HomeRecyclerAdapter(private val viewModel: HomeViewModel) :
-    ListAdapter<Product, HomeRecyclerAdapter.HomeViewHolder>(DiffCallback) {
+class CategoriesDetailRecyclerAdapter(private val viewModel: CategoriesDetailViewModel) :
+    ListAdapter<Product, CategoriesDetailRecyclerAdapter.CategoriesDetailViewHolder>(DiffCallback) {
 
-    class HomeViewHolder(
+    class CategoriesDetailViewHolder(
         private val binding: RowProductItemBinding,
-        private val viewModel: HomeViewModel
-    ) :
-        RecyclerView.ViewHolder(binding.root) {
+        private val viewModel: CategoriesDetailViewModel
+    ) : RecyclerView.ViewHolder(binding.root) {
+
         fun bind(product: Product) {
             with(binding) {
                 categoryIdTV.text = product.categoryId.toString()
@@ -40,14 +40,14 @@ class HomeRecyclerAdapter(private val viewModel: HomeViewModel) :
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeViewHolder {
-        return HomeViewHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesDetailViewHolder {
+        return CategoriesDetailViewHolder(
             RowProductItemBinding.inflate(LayoutInflater.from(parent.context), parent, false),
             viewModel
         )
     }
 
-    override fun onBindViewHolder(holder: HomeViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CategoriesDetailViewHolder, position: Int) {
         val currentList = currentList[position]
         holder.bind(currentList)
     }

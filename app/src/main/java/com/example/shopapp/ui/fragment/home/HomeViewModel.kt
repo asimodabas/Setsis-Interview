@@ -5,9 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.common.Resource
-import com.example.shopapp.common.state.GetRandomProductState
+import com.example.shopapp.common.state.GetProductState
 import com.example.shopapp.data.dto.Product
-import com.example.shopapp.domain.repository.LoginRepository
+import com.example.shopapp.domain.repository.RoomRepository
 import com.example.shopapp.domain.repository.ShopRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,11 +17,11 @@ import javax.inject.Inject
 class HomeViewModel
 @Inject constructor(
     private val shopRepository: ShopRepository,
-    private val loginRepository: LoginRepository
+    private val roomRepository: RoomRepository
 ) : ViewModel() {
 
-    private val _randomProductState = MutableLiveData<GetRandomProductState>()
-    val randomProductState: LiveData<GetRandomProductState> = _randomProductState
+    private val _randomProductState = MutableLiveData<GetProductState>()
+    val randomProductState: LiveData<GetProductState> = _randomProductState
 
     init {
         getCategories()
@@ -29,16 +29,16 @@ class HomeViewModel
 
     private fun getCategories() {
         viewModelScope.launch {
-            loginRepository.getToken()?.let { token ->
+            roomRepository.getToken()?.let { token ->
                 shopRepository.getRandomProduct(token.accessToken) { result ->
                     when (result) {
                         is Resource.Success -> _randomProductState.postValue(
-                            GetRandomProductState(
+                            GetProductState(
                                 success = result.data
                             )
                         )
                         is Resource.Error -> _randomProductState.postValue(
-                            GetRandomProductState(
+                            GetProductState(
                                 error = result.message
                             )
                         )
@@ -49,6 +49,6 @@ class HomeViewModel
     }
 
     fun saveProduct(product: Product) = viewModelScope.launch {
-        loginRepository.saveProduct(product)
+        roomRepository.saveProduct(product)
     }
 }

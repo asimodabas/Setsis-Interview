@@ -7,7 +7,7 @@ import com.example.shopapp.common.Resource
 import com.example.shopapp.common.SingleLiveEvent
 import com.example.shopapp.common.state.LoginState
 import com.example.shopapp.data.dto.Token
-import com.example.shopapp.domain.repository.LoginRepository
+import com.example.shopapp.domain.repository.RoomRepository
 import com.example.shopapp.domain.repository.ShopRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(
-    private val loginRepository: LoginRepository, private val shopRepository: ShopRepository
+    private val roomRepository: RoomRepository, private val shopRepository: ShopRepository
 ) : ViewModel() {
 
     private val _loginState = SingleLiveEvent<LoginState>()
@@ -31,6 +31,6 @@ class LoginViewModel @Inject constructor(
     }
 
     fun addToken(token: Token) = viewModelScope.launch {
-        loginRepository.addToken(token)
+        roomRepository.addToken(token)
     }
 }

@@ -128,4 +128,30 @@ class ShopRepositoryImpl @Inject constructor(
             result(Resource.Error(e.message.orEmpty()))
         }
     }
+
+    override fun getAllProduct(accessToken: String, result: (Resource<ProductResponse?>) -> Unit) {
+        try {
+            service.getAllProduct("Bearer $accessToken")
+                .enqueue(object : Callback<ProductResponse> {
+                    override fun onResponse(
+                        call: Call<ProductResponse>, response: Response<ProductResponse>
+                    ) {
+                        response.body()?.let { productResponse ->
+                            result(Resource.Success(productResponse))
+                        } ?: kotlin.run {
+                            result(Resource.Error("${response.raw().code}: ${response.raw().message}"))
+                        }
+                    }
+
+                    override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
+                        result(Resource.Error(t.message.orEmpty()))
+                    }
+
+                })
+        } catch (e: HttpException) {
+            result(Resource.Error(e.message()))
+        } catch (e: Exception) {
+            result(Resource.Error(e.message.orEmpty()))
+        }
+    }
 }

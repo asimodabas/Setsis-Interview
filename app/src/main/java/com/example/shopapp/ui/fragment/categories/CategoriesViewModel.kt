@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.shopapp.common.Resource
 import com.example.shopapp.common.state.GetCategoriesState
-import com.example.shopapp.domain.repository.LoginRepository
+import com.example.shopapp.domain.repository.RoomRepository
 import com.example.shopapp.domain.repository.ShopRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -16,7 +16,7 @@ import javax.inject.Inject
 class CategoriesViewModel
 @Inject constructor(
     private val shopRepository: ShopRepository,
-    private val loginRepository: LoginRepository,
+    private val roomRepository: RoomRepository
 ) : ViewModel() {
 
     private val _categoriesState = MutableLiveData<GetCategoriesState>()
@@ -28,7 +28,7 @@ class CategoriesViewModel
 
     private fun getCategories() {
         viewModelScope.launch {
-            loginRepository.getToken()?.let { token ->
+            roomRepository.getToken()?.let { token ->
                 shopRepository.getCategories(token.accessToken) { result ->
                     when (result) {
                         is Resource.Success -> _categoriesState.postValue(GetCategoriesState(success = result.data))

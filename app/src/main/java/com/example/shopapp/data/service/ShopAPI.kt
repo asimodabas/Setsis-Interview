@@ -31,6 +31,11 @@ interface ShopAPI {
         @Header("Authorization") accessToken: String
     ): Call<ProductResponse>
 
+    @GET("api/Product/GetAll")
+    fun getAllProduct(
+        @Header("Authorization") accessToken: String
+    ): Call<ProductResponse>
+
     @POST("api/Order")
     fun requestOrder(
         @Header("Authorization") accessToken: String,

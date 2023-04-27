@@ -3,7 +3,7 @@ package com.example.shopapp.domain.repository
 import com.example.shopapp.data.dto.Product
 import com.example.shopapp.data.dto.Token
 
-interface LoginRepository {
+interface RoomRepository {
 
     suspend fun getToken(): Token?
 
@@ -11,5 +11,10 @@ interface LoginRepository {
 
     suspend fun deleteAll()
 
+    suspend fun deleteProduct(product: Product)
+
+    suspend fun getProducts(): List<Product>
+
     suspend fun saveProduct(product: Product)
+
 }

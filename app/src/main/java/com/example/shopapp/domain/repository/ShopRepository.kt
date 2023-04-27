@@ -21,4 +21,8 @@ interface ShopRepository {
     fun getRandomProduct(
         accessToken: String, result: (Resource<ProductResponse?>) -> Unit
     )
+
+    fun getAllProduct(
+        accessToken: String, result: (Resource<ProductResponse?>) -> Unit
+    )
 }

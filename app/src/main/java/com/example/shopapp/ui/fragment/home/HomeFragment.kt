@@ -18,7 +18,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(R.layout.fragment_home), HomeRecyclerAdapter.OnItemClickListener {
+class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val binding by viewBinding(FragmentHomeBinding::bind)
     private val viewModel: HomeViewModel by viewModels()
@@ -48,17 +48,11 @@ class HomeFragment : Fragment(R.layout.fragment_home), HomeRecyclerAdapter.OnIte
 
     private fun setupRv() {
         binding.homeRV.apply {
-            homeRecyclerAdapter = HomeRecyclerAdapter(this@HomeFragment)
+            homeRecyclerAdapter = HomeRecyclerAdapter(viewModel)
             adapter = homeRecyclerAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             clipToPadding = false
-        }
-    }
-
-    override fun onItemClick(product: Product) {
-        CoroutineScope(Dispatchers.Main).launch {
-            viewModel.saveProduct(product)
         }
     }
 }

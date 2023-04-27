@@ -16,18 +16,25 @@
         android:id="@+id/categoriesFragment"
         android:name="com.example.shopapp.ui.fragment.categories.CategoriesFragment"
         android:label="fragment_categories"
-        tools:layout="@layout/fragment_categories" >
+        tools:layout="@layout/fragment_categories">
         <action
-            android:id="@+id/action_categoriesFragment_to_productFragment"
-            app:destination="@id/productFragment" />
+            android:id="@+id/action_categoriesFragment_to_categoriesDetailFragment"
+            app:destination="@id/categoriesDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/productFragment"
         android:name="com.example.shopapp.ui.fragment.product.ProductFragment"
         android:label="fragment_product"
-        tools:layout="@layout/fragment_product" >
+        tools:layout="@layout/fragment_product">
+
+    </fragment>
+    <fragment
+        android:id="@+id/categoriesDetailFragment"
+        android:name="com.example.shopapp.ui.fragment.categories_detail.CategoriesDetailFragment"
+        android:label="fragment_categories_detail"
+        tools:layout="@layout/fragment_categories_detail">
         <argument
-            android:name="argId"
+            android:name="categoryId"
             app:argType="integer" />
     </fragment>
 </navigation>
