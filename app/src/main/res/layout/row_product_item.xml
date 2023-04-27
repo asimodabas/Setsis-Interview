@@ -12,6 +12,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"
             android:paddingHorizontal="15dp"
             android:paddingVertical="5dp">
@@ -26,12 +27,12 @@
                 tools:text="categoryId" />
 
             <TextView
-                android:id="@+id/categoryNameTV"
+                android:id="@+id/priceTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="categoryName" />
+                tools:text="price" />
 
             <TextView
                 android:id="@+id/createdDateTV"
@@ -42,12 +43,26 @@
                 tools:text="createdDate" />
 
             <TextView
-                android:id="@+id/productsTV"
+                android:id="@+id/productNameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
-                tools:text="products" />
+                tools:text="product" />
+
+            <TextView
+                android:id="@+id/stockTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                tools:text="stock" />
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_basket" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

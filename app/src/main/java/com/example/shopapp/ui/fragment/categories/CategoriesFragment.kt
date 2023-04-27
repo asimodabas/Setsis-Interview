@@ -18,7 +18,7 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
     private val binding by viewBinding(FragmentCategoriesBinding::bind)
     private val viewModel: CategoriesViewModel by viewModels()
-    private lateinit var recyclerAdapter: CategoriesRecyclerAdapter
+    private lateinit var categoriesRecyclerAdapter: CategoriesRecyclerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +31,7 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
         viewModel.categoriesState.observe(viewLifecycleOwner) { state ->
             with(binding) {
                 state.success?.let { response ->
-                    response.categories.let { recyclerAdapter.submitList(it) }
+                    response.categories.let { categoriesRecyclerAdapter.submitList(it) }
                     categoriesRV.isVisible = true
                 }
 
@@ -44,8 +44,8 @@ class CategoriesFragment : Fragment(R.layout.fragment_categories) {
 
     private fun setupRv() {
         binding.categoriesRV.apply {
-            recyclerAdapter = CategoriesRecyclerAdapter()
-            adapter = recyclerAdapter
+            categoriesRecyclerAdapter = CategoriesRecyclerAdapter()
+            adapter = categoriesRecyclerAdapter
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             clipToPadding = false

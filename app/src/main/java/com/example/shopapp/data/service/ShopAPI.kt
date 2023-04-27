@@ -1,6 +1,7 @@
 package com.example.shopapp.data.service
 
 import com.example.shopapp.data.dto.CategoriesResponse
+import com.example.shopapp.data.dto.ProductResponse
 import com.example.shopapp.data.dto.TokenResponse
 import com.example.shopapp.domain.model.LoginRequest
 import com.example.shopapp.domain.model.RefreshTokenRequest
@@ -24,4 +25,8 @@ interface ShopAPI {
         @Header("Authorization") accessToken: String
     ): Call<CategoriesResponse>
 
+    @GET("api/Product/GetRandomProducts")
+    fun getRandomProduct(
+        @Header("Authorization") accessToken: String
+    ): Call<ProductResponse>
 }

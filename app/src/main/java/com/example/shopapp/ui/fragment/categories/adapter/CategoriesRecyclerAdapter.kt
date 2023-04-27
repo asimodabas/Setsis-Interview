@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shopapp.data.dto.Category
 import com.example.shopapp.databinding.RowCategoriesItemBinding
 
-class CategoriesRecyclerAdapter() :
+class CategoriesRecyclerAdapter :
     ListAdapter<Category, CategoriesRecyclerAdapter.CategoriesViewHolder>(DiffCallback) {
 
 
@@ -16,6 +16,7 @@ class CategoriesRecyclerAdapter() :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(category: Category) {
             with(binding) {
+                categoryIdTV.text = category.id.toString()
                 categoryNameTV.text = category.categoryName
                 createdDateTV.text = category.createdDate
             }
