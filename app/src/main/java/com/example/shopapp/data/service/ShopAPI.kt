@@ -1,8 +1,8 @@
 package com.example.shopapp.data.service
 
-import com.example.shopapp.data.dto.CategoriesResponse
-import com.example.shopapp.data.dto.ProductResponse
-import com.example.shopapp.data.dto.TokenResponse
+import com.example.shopapp.data.dto.response.CategoriesResponse
+import com.example.shopapp.data.dto.response.ProductResponse
+import com.example.shopapp.data.dto.response.TokenResponse
 import com.example.shopapp.domain.model.LoginRequest
 import com.example.shopapp.domain.model.OrdersRequest
 import com.example.shopapp.domain.model.RefreshTokenRequest
@@ -31,6 +31,7 @@ interface ShopAPI {
         @Header("Authorization") accessToken: String
     ): Call<ProductResponse>
 
+  //@GET("api/Product/GetRandomProducts")
     @GET("api/Product/GetAll")
     fun getAllProduct(
         @Header("Authorization") accessToken: String
@@ -40,5 +41,5 @@ interface ShopAPI {
     fun requestOrder(
         @Header("Authorization") accessToken: String,
         @Body body: OrdersRequest
-    ): Call<Nothing>
+    ): Call<Int>
 }

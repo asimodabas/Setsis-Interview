@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.shopapp.common.Resource
 import com.example.shopapp.common.state.GetProductState
 import com.example.shopapp.data.dto.Product
+import com.example.shopapp.data.dto.response.ProductResponse
 import com.example.shopapp.domain.repository.RoomRepository
 import com.example.shopapp.domain.repository.ShopRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -16,8 +17,7 @@ import javax.inject.Inject
 @HiltViewModel
 class HomeViewModel
 @Inject constructor(
-    private val shopRepository: ShopRepository,
-    private val roomRepository: RoomRepository
+    private val shopRepository: ShopRepository, private val roomRepository: RoomRepository
 ) : ViewModel() {
 
     private val _randomProductState = MutableLiveData<GetProductState>()
@@ -34,7 +34,7 @@ class HomeViewModel
                     when (result) {
                         is Resource.Success -> _randomProductState.postValue(
                             GetProductState(
-                                success = result.data
+                                success = ProductResponse(result.data?.products.orEmpty().map { it.copy(count = 1) })
                             )
                         )
                         is Resource.Error -> _randomProductState.postValue(
@@ -49,6 +49,10 @@ class HomeViewModel
     }
 
     fun saveProduct(product: Product) = viewModelScope.launch {
-        roomRepository.saveProduct(product)
+        roomRepository.getProducts().let { products ->
+            if (products.none { it.id == product.id }) {
+                roomRepository.saveProduct(product)
+            }
+        }
     }
 }

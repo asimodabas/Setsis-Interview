@@ -35,6 +35,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         viewModel.randomProductState.observe(viewLifecycleOwner) { state ->
             with(binding) {
                 state.success?.let { response ->
+                    println(homeRecyclerAdapter.currentList)
                     response.products.let { homeRecyclerAdapter.submitList(it) }
                     homeRV.isVisible = true
                 }

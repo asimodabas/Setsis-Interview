@@ -1,12 +1,13 @@
 package com.example.shopapp.data.repository
 
 import com.example.shopapp.common.Resource
-import com.example.shopapp.data.dto.CategoriesResponse
-import com.example.shopapp.data.dto.ProductResponse
+import com.example.shopapp.data.dto.response.CategoriesResponse
+import com.example.shopapp.data.dto.response.ProductResponse
 import com.example.shopapp.data.dto.Token
-import com.example.shopapp.data.dto.TokenResponse
+import com.example.shopapp.data.dto.response.TokenResponse
 import com.example.shopapp.data.service.ShopAPI
 import com.example.shopapp.domain.model.LoginRequest
+import com.example.shopapp.domain.model.OrdersRequest
 import com.example.shopapp.domain.model.RefreshTokenRequest
 import com.example.shopapp.domain.repository.ShopRepository
 import retrofit2.Call
@@ -148,6 +149,30 @@ class ShopRepositoryImpl @Inject constructor(
                     }
 
                 })
+        } catch (e: HttpException) {
+            result(Resource.Error(e.message()))
+        } catch (e: Exception) {
+            result(Resource.Error(e.message.orEmpty()))
+        }
+    }
+
+    override fun sendAllProduct(
+        accessToken: String, body: OrdersRequest, result: (Resource<Int?>) -> Unit
+    ) {
+        try {
+            service.requestOrder("Bearer $accessToken", body).enqueue(object : Callback<Int> {
+                override fun onResponse(call: Call<Int>, response: Response<Int>) {
+                    response.body()?.let { requestOrderResponse ->
+                        result(Resource.Success(requestOrderResponse))
+                    } ?: kotlin.run {
+                        result(Resource.Error("${response.raw().code}: ${response.raw().message}"))
+                    }
+                }
+
+                override fun onFailure(call: Call<Int>, t: Throwable) {
+                    result(Resource.Error(t.message.orEmpty()))
+                }
+            })
         } catch (e: HttpException) {
             result(Resource.Error(e.message()))
         } catch (e: Exception) {

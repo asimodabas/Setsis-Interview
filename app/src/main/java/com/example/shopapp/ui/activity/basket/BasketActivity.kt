@@ -1,6 +1,7 @@
 package com.example.shopapp.ui.activity.basket
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -11,6 +12,8 @@ import com.example.shopapp.R
 import com.example.shopapp.common.viewBinding
 import com.example.shopapp.databinding.ActivityBasketBinding
 import com.example.shopapp.databinding.PayLayoutBinding
+import com.example.shopapp.domain.model.Order
+import com.example.shopapp.domain.model.OrdersRequest
 import com.example.shopapp.ui.activity.basket.adapter.BasketRecyclerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -38,7 +41,38 @@ class BasketActivity : AppCompatActivity() {
                     .setNegativeButton(getString(R.string.basket_cancel)) { dialog, _ ->
                         dialog.dismiss()
                     }.setPositiveButton(getString(R.string.basket_accept)) { dialog, _ ->
-                        if (v.nameET.text.isNotEmpty() && v.cardNumberET.text.isNotEmpty() && v.mounthET.text.isNotEmpty() && v.yearET.text.isNotEmpty() && v.cvvET.text.isNotEmpty()) {
+                        if (v.nameET.text.isNotEmpty() &&
+                            v.cardNumberET.text.isNotEmpty() &&
+                            v.mounthET.text.isNotEmpty() &&
+                            v.yearET.text.isNotEmpty() &&
+                            v.cvvET.text.isNotEmpty()
+                        ) {
+                            val ordersList = mutableListOf<Order>()
+                            adapter.currentList.let { products ->
+                                products.forEach { product ->
+                                    Order(
+                                        count = product.count,
+                                        price = product.price.toInt(),
+                                        productId = product.id
+                                    ).let { order ->
+                                        ordersList.add(order)
+                                    }
+                                }
+                                val request = OrdersRequest(
+                                    ordersList
+                                )
+                                viewModel.requestOrder(request)
+                            }
+
+                            viewModel.orderState.observe(this@BasketActivity) { state ->
+                                if (state.requireRedirect) {
+                                    finish()
+                                }
+                                state.error?.let { message ->
+                                    Toast.makeText(this@BasketActivity, message, Toast.LENGTH_SHORT)
+                                        .show()
+                                }
+                            }
                             Toast.makeText(
                                 this@BasketActivity,
                                 getString(R.string.basket_pay_success),

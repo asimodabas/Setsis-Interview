@@ -21,8 +21,11 @@ class BasketRecyclerAdapter(private val viewModel: BasketViewModel) :
             priceTV.text = product.price.toString()
             productNameTV.text = product.productName
             stockTV.text = product.stock.toString()
+            numberTV.text = product.count.toString()
 
             deleteBasketIv.setOnClickListener { viewModel.deleteProduct(product) }
+            plusTV.setOnClickListener { viewModel.plusProductCount(product.id) }
+            minusTV.setOnClickListener { viewModel.minusProductCount(product.id) }
 
         }
     }

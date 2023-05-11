@@ -1,9 +1,10 @@
 package com.example.shopapp.domain.repository
 
 import com.example.shopapp.common.Resource
-import com.example.shopapp.data.dto.CategoriesResponse
-import com.example.shopapp.data.dto.ProductResponse
+import com.example.shopapp.data.dto.response.CategoriesResponse
+import com.example.shopapp.data.dto.response.ProductResponse
 import com.example.shopapp.data.dto.Token
+import com.example.shopapp.domain.model.OrdersRequest
 
 interface ShopRepository {
     fun logIn(
@@ -24,5 +25,9 @@ interface ShopRepository {
 
     fun getAllProduct(
         accessToken: String, result: (Resource<ProductResponse?>) -> Unit
+    )
+
+    fun sendAllProduct(
+        accessToken: String, body: OrdersRequest, result: (Resource<Int?>) -> Unit
     )
 }

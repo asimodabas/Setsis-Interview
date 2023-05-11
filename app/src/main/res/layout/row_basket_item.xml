@@ -58,13 +58,47 @@
                 android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
                 tools:text="@string/basket_stock" />
 
-            <ImageView
-                android:id="@+id/deleteBasketIv"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="10dp"
-                android:background="?selectableItemBackground"
-                android:src="@drawable/ic_delete_item" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="15dp"
+                android:paddingVertical="5dp">
+
+                <TextView
+                    android:id="@+id/minusTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="-"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/deleteBasketIv"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="?selectableItemBackground"
+                    android:src="@drawable/ic_delete_item" />
+
+                <TextView
+                    android:id="@+id/plusTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="+"
+                    android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/numberTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -11,10 +11,15 @@ interface RoomRepository {
 
     suspend fun deleteAll()
 
+    suspend fun deleteAllProduct()
+
     suspend fun deleteProduct(product: Product)
 
     suspend fun getProducts(): List<Product>
 
     suspend fun saveProduct(product: Product)
 
+    suspend fun minusProductCount(productId: Int)
+
+    suspend fun plusProductCount(productId: Int)
 }

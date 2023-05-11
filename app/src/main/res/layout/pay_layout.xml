@@ -57,6 +57,7 @@
                 android:background="@drawable/bg_customtext"
                 android:hint="@string/basket_mounth"
                 android:inputType="number"
+                android:maxLines="2"
                 android:padding="15dp"
                 android:textAlignment="center" />
 
@@ -69,6 +70,7 @@
                 android:background="@drawable/bg_customtext"
                 android:hint="@string/basket_year"
                 android:inputType="number"
+                android:maxLines="2"
                 android:padding="15dp"
                 android:textAlignment="center" />
 
@@ -80,6 +82,7 @@
                 android:background="@drawable/bg_customtext"
                 android:hint="@string/basket_cvv"
                 android:inputType="number"
+                android:maxLines="3"
                 android:padding="15dp"
                 android:textAlignment="center" />
         </LinearLayout>

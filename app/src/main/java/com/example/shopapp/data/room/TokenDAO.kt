@@ -6,7 +6,6 @@ import androidx.room.Insert
 import androidx.room.Query
 import com.example.shopapp.data.dto.Product
 import com.example.shopapp.data.dto.Token
-import retrofit2.http.DELETE
 
 @Dao
 interface TokenDAO {
@@ -23,9 +22,18 @@ interface TokenDAO {
     @Query("DELETE FROM token")
     fun deleteAll()
 
+    @Query("DELETE FROM product")
+    fun deleteAllProduct()
+
     @Delete
     fun deleteProduct(product: Product)
 
     @Insert
     fun saveProduct(product: Product)
+
+    @Query("UPDATE product SET count = count+1 WHERE id = :productId")
+    fun plusProductCount(productId: Int)
+
+    @Query("UPDATE product SET count = count-1 WHERE id = :productId")
+    fun minusProductCount(productId: Int)
 }

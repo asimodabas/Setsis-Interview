@@ -12,5 +12,6 @@ data class Product(
     @SerializedName("id") val id: Int,
     @SerializedName("price") val price: Double,
     @SerializedName("productName") val productName: String,
-    @SerializedName("stock") val stock: Int
+    @SerializedName("stock") val stock: Int,
+    var count: Int = 1
 )

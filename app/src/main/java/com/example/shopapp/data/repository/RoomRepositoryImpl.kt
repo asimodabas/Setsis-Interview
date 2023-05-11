@@ -24,6 +24,10 @@ class RoomRepositoryImpl @Inject constructor(
         dao.deleteAll()
     }
 
+    override suspend fun deleteAllProduct() = withContext(Dispatchers.IO) {
+        dao.deleteAllProduct()
+    }
+
     override suspend fun deleteProduct(product: Product) = withContext(Dispatchers.IO) {
         dao.deleteProduct(product)
     }
@@ -34,5 +38,13 @@ class RoomRepositoryImpl @Inject constructor(
 
     override suspend fun saveProduct(product: Product) = withContext(Dispatchers.IO) {
         dao.saveProduct(product)
+    }
+
+    override suspend fun minusProductCount(productId: Int) = withContext(Dispatchers.IO) {
+        dao.minusProductCount(productId)
+    }
+
+    override suspend fun plusProductCount(productId: Int) = withContext(Dispatchers.IO) {
+        dao.plusProductCount(productId)
     }
 }
