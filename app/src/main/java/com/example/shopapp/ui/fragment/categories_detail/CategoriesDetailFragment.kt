@@ -19,27 +19,33 @@ class CategoriesDetailFragment : Fragment(R.layout.fragment_categories_detail) {
     private val binding by viewBinding(FragmentCategoriesDetailBinding::bind)
     private val viewModel by viewModels<CategoriesDetailViewModel>()
     private val args by navArgs<CategoriesDetailFragmentArgs>()
+    private lateinit var categoriesDetailRecyclerAdapter: CategoriesDetailRecyclerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.getProductsByCategoryId(args.categoryId)
-        val adapter = CategoriesDetailRecyclerAdapter(viewModel)
-        with(binding) {
-            categoriesDetailRV.adapter = adapter
-            categoriesDetailRV.layoutManager = LinearLayoutManager(requireContext())
-            viewModel.productsState.observe(viewLifecycleOwner) { state ->
-                state.success?.let { response ->
-                    println(response.products)
-                    adapter.submitList(response.products.filter { it.categoryId == args.categoryId })
-                }
 
-                state.error?.let { message ->
-                    Toast.makeText(
-                        requireContext(),
-                        message,
-                        Toast.LENGTH_SHORT
-                    ).show()
-                }
+        setupRv()
+        observeProductsData()
+
+        viewModel.getProductsByCategoryId(args.categoryId)
+    }
+
+    private fun setupRv() {
+        binding.categoriesDetailRV.apply {
+            categoriesDetailRecyclerAdapter = CategoriesDetailRecyclerAdapter(viewModel)
+            adapter = categoriesDetailRecyclerAdapter
+            layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun observeProductsData() {
+        viewModel.productsState.observe(viewLifecycleOwner) { state ->
+            state.success?.let { response ->
+                categoriesDetailRecyclerAdapter.submitList(response.products.filter { it.categoryId == args.categoryId })
+            }
+
+            state.error?.let { message ->
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
             }
         }
     }

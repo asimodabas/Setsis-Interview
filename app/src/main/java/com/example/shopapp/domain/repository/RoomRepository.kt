@@ -4,7 +4,6 @@ import com.example.shopapp.data.dto.Product
 import com.example.shopapp.data.dto.Token
 
 interface RoomRepository {
-
     suspend fun getToken(): Token?
 
     suspend fun addToken(token: Token)
