@@ -25,20 +25,26 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
+        setupBottomNavigationView()
+        setupFabClickListener()
+        setupNavigation()
+    }
+
+    private fun setupBottomNavigationView() {
         binding.bottomNavigationView.background = null
         binding.bottomNavigationView.menu.getItem(1).isEnabled = false
+    }
 
+    private fun setupFabClickListener() {
         binding.fab.setOnClickListener {
-            intent = Intent(this, BasketActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, BasketActivity::class.java))
         }
+    }
 
+    private fun setupNavigation() {
         navController = findNavController(R.id.fContainerFlow)
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.homeFragment, R.id.categoriesFragment
-            )
-        )
+        val appBarConfiguration =
+            AppBarConfiguration(setOf(R.id.homeFragment, R.id.categoriesFragment))
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.bottomNavigationView.setupWithNavController(navController)
     }

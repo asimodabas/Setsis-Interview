@@ -22,19 +22,14 @@ class SplashScreen : AppCompatActivity() {
         supportActionBar?.hide()
 
         viewModel.loginState.observe(this) { state ->
-            if (state.isAuthenticated) {
-                startActivity(Intent(this, MainActivity::class.java))
-                finish()
+            val intent = if (state.isAuthenticated) {
+                Intent(this, MainActivity::class.java)
             } else {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
+                Intent(this, LoginActivity::class.java)
             }
 
-            state.error?.let {
-                startActivity(Intent(this, LoginActivity::class.java))
-                finish()
-            }
+            startActivity(intent)
+            finish()
         }
-
     }
 }

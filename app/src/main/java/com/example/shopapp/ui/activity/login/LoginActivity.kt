@@ -26,34 +26,34 @@ class LoginActivity : AppCompatActivity() {
         supportActionBar?.hide()
 
         binding.loginButton.setOnClickListener {
-            val userNameET = binding.userNameET.text
-            val passwordET = binding.PasswordET.text
+            val userName = binding.userNameET.text.toString()
+            val password = binding.PasswordET.text.toString()
 
-            if (!(userNameET.isNullOrEmpty() && passwordET.isNullOrEmpty())) {
-                viewModel.logIn(userNameET.toString(), passwordET.toString())
-                viewModel.loginState.observe(this) { state ->
-                    state.success?.let { token ->
-                        Log.d(
-                            "TAG",
-                            "accessToken: ${token.accessToken} \n refreshToken: ${token.refreshToken}"
-                        )
-
-                        CoroutineScope(Dispatchers.Main).launch {
-                            viewModel.addToken(token)
-                        }
-
-                        intent = Intent(this, MainActivity::class.java)
-                        startActivity(intent)
-                    }
-
-                    state.error?.let { message ->
-                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-                    }
-
-                    Log.d("TAG", "onCreate: $state")
-                }
+            if (userName.isNotBlank() && password.isNotBlank()) {
+                viewModel.logIn(userName, password)
             } else {
                 Toast.makeText(this, "Please fill in the blanks!", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            viewModel.loginState.observe(this) { state ->
+                state.success?.let { token ->
+                    Log.d(
+                        "TAG",
+                        "accessToken: ${token.accessToken} \n refreshToken: ${token.refreshToken}"
+                    )
+                    CoroutineScope(Dispatchers.Main).launch {
+                        viewModel.addToken(token)
+                    }
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                }
+
+                state.error?.let { message ->
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                }
+
+                Log.d("TAG", "onCreate: $state")
             }
         }
     }

@@ -1,9 +1,9 @@
 package com.example.shopapp.data.repository
 
 import com.example.shopapp.common.Resource
+import com.example.shopapp.data.dto.Token
 import com.example.shopapp.data.dto.response.CategoriesResponse
 import com.example.shopapp.data.dto.response.ProductResponse
-import com.example.shopapp.data.dto.Token
 import com.example.shopapp.data.dto.response.TokenResponse
 import com.example.shopapp.data.service.ShopAPI
 import com.example.shopapp.domain.model.LoginRequest
@@ -65,7 +65,6 @@ class ShopRepositoryImpl @Inject constructor(
                     override fun onFailure(call: Call<TokenResponse>, t: Throwable) {
                         result(Resource.Error(t.message.orEmpty()))
                     }
-
                 })
         } catch (e: HttpException) {
             result(Resource.Error(e.message()))
@@ -93,7 +92,6 @@ class ShopRepositoryImpl @Inject constructor(
                     override fun onFailure(call: Call<CategoriesResponse>, t: Throwable) {
                         result(Resource.Error(t.message.orEmpty()))
                     }
-
                 })
         } catch (e: HttpException) {
             result(Resource.Error(e.message()))
@@ -121,7 +119,6 @@ class ShopRepositoryImpl @Inject constructor(
                     override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
                         result(Resource.Error(t.message.orEmpty()))
                     }
-
                 })
         } catch (e: HttpException) {
             result(Resource.Error(e.message()))
@@ -147,7 +144,6 @@ class ShopRepositoryImpl @Inject constructor(
                     override fun onFailure(call: Call<ProductResponse>, t: Throwable) {
                         result(Resource.Error(t.message.orEmpty()))
                     }
-
                 })
         } catch (e: HttpException) {
             result(Resource.Error(e.message()))
